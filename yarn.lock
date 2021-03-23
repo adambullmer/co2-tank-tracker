@@ -4717,6 +4717,7 @@ __metadata:
     jest: ^26.6.3
     lint-staged: ^10.5.4
     nuxt: ^2.15.3
+    nuxt-property-decorator: ^2.9.1
     prettier: ^2.2.1
     ts-jest: ^26.5.4
     vue-jest: ^3.0.4
@@ -10583,6 +10584,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"nuxt-property-decorator@npm:^2.9.1":
+  version: 2.9.1
+  resolution: "nuxt-property-decorator@npm:2.9.1"
+  dependencies:
+    vue-class-component: ^7.2.6
+    vue-property-decorator: ^9.0.0
+    vuex-class: ^0.3.2
+    vuex-module-decorators: ^1.0.1
+  checksum: 38eefe59c76fa6a5fcf0e177f38dd58e5e106e4d046e720c9b7e802fef22eb86a4961466a19b10d6a87f62c6e7b554f66138204501a2794d3f4cb86691621b2e
+  languageName: node
+  linkType: hard
+
 "nuxt@npm:^2.15.3":
   version: 2.15.3
   resolution: "nuxt@npm:2.15.3"
@@ -14997,6 +15010,15 @@ typescript@~4.2:
   languageName: node
   linkType: hard
 
+"vue-class-component@npm:^7.2.6":
+  version: 7.2.6
+  resolution: "vue-class-component@npm:7.2.6"
+  peerDependencies:
+    vue: ^2.0.0
+  checksum: 1cc05c1b69525e012a293f7611f574bbdd052bfc43a1c3577e34248760fde9a1b9d1ec7492cb5288fbba5063f68eda07c8095679f8a66116bfc81161285c15ba
+  languageName: node
+  linkType: hard
+
 "vue-client-only@npm:^2.0.0":
   version: 2.0.0
   resolution: "vue-client-only@npm:2.0.0"
@@ -15087,6 +15109,16 @@ typescript@~4.2:
   languageName: node
   linkType: hard
 
+"vue-property-decorator@npm:^9.0.0":
+  version: 9.1.2
+  resolution: "vue-property-decorator@npm:9.1.2"
+  peerDependencies:
+    vue: "*"
+    vue-class-component: "*"
+  checksum: a4af390197a0f0695f72804be2d71b1fb3530b34d9f425f38c42aae2fc3024d85fc0ccfd60aefb5e3413a8b3fcba7428f4c12379e110831c53616082fb6730a6
+  languageName: node
+  linkType: hard
+
 "vue-router@npm:^3.5.1":
   version: 3.5.1
   resolution: "vue-router@npm:3.5.1"
@@ -15165,6 +15197,17 @@ typescript@~4.2:
   peerDependencies:
     vue: ^2.6.4
   checksum: b148bbf92451bfa9d7e6878c1448957abd754d410e6442b1a079a06b40ffbafaa6a462832c53c7da947a525b2b67d7a307451878cb64facdc5963d9bc2280e69
+  languageName: node
+  linkType: hard
+
+"vuex-class@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "vuex-class@npm:0.3.2"
+  peerDependencies:
+    vue: ^2.5.0
+    vue-class-component: ^6.0.0 || ^7.0.0
+    vuex: ^3.0.0
+  checksum: 418b8abcfdc22363aff91814225e77c9b2cebe042a2771f80c9e6a53a64f3171d2586f82c1eb2ad489539cca7276a1e760a4b62040cf5db543c11c9a6f06e990
   languageName: node
   linkType: hard
 
