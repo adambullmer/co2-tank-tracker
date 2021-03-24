@@ -44,6 +44,8 @@ const config: NuxtConfig = {
   modules: [
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
+    // https://firebase.nuxtjs.org
+    "@nuxtjs/firebase",
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -65,6 +67,24 @@ const config: NuxtConfig = {
         registerStylesSSR: true,
       } as any,
     },
+  },
+
+  firebase: {
+    config: {
+      apiKey: process.env.FIREBASE_API_KEY as string,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN as string,
+      databaseURL: process.env.FIREBASE_DATABASE_URL as string,
+      projectId: process.env.FIREBASE_PROJECT_ID as string,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET as string,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID as string,
+      appId: process.env.FIREBASE_APP_ID as string,
+      measurementId: process.env.FIREBASE_MEASUREMENT_ID as string,
+    },
+    services: {
+      auth: true,
+      database: true,
+    },
+    onFirebaseHosting: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -17,7 +17,13 @@
       "~/*": ["./src/*"],
       "@/*": ["./src/*"]
     },
-    "types": ["@nuxt/types", "@types/node", "@nuxtjs/vuetify", "jest"]
+    "types": [
+      "@nuxt/types",
+      "@types/node",
+      "@nuxtjs/vuetify",
+      "jest",
+      "@nuxtjs/firebase"
+    ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
