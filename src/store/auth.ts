@@ -9,6 +9,7 @@ import {
 @Module({
   name: "auth",
   namespaced: true,
+  stateFactory: true,
   preserveState: true,
 })
 export default class Auth extends VuexModule {
