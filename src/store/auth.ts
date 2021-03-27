@@ -5,6 +5,9 @@ import {
   VuexAction as Action,
   VuexMutation as Mutation,
 } from "nuxt-property-decorator";
+import { config } from "vuex-module-decorators";
+
+config.rawError = true;
 
 @Module({
   name: "auth",
