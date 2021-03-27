@@ -6,7 +6,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-container>
+      <v-container class="fill-height">
         <nuxt />
       </v-container>
     </v-main>
@@ -20,6 +20,8 @@
 <script lang="ts">
 import { Vue, Component } from "nuxt-property-decorator";
 
-@Component
+@Component({
+  middleware: "auth",
+})
 export default class DefaultLayout extends Vue {}
 </script>

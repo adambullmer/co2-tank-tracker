@@ -81,7 +81,13 @@ const config: NuxtConfig = {
       measurementId: process.env.FIREBASE_MEASUREMENT_ID as string,
     },
     services: {
-      auth: true,
+      auth: {
+        persistence: "local",
+        initialize: {
+          onAuthStateChangedAction: "auth/authChange",
+          onAuthStateChangedMutation: "auth/setAuth",
+        },
+      },
       database: true,
     },
     onFirebaseHosting: true,
