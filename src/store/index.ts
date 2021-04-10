@@ -1,15 +1,16 @@
 /* eslint-disable import/no-mutable-exports */
-import { config, getModule } from "vuex-module-decorators";
+import { getModule } from "vuex-module-decorators";
 import Auth from "@/store/auth";
-
-config.rawError = true;
+import Usage from "@/store/usage";
 
 let authStore: Auth;
+let usageStore: Usage;
 
 function initializeStores(store: any) {
   authStore = getModule(Auth, store);
+  usageStore = getModule(Usage, store);
 }
 
 export const state = () => ({});
 export const plugins = [initializeStores];
-export { authStore };
+export { authStore, usageStore };

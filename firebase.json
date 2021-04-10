@@ -11,5 +11,20 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "emulators": {
+    "database": {
+      "host": "127.0.0.1",
+      "port": 9000
+    },
+    "hosting": {
+      "host": "127.0.0.1",
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true,
+      "port": "8081",
+      "host": "127.0.0.1"
+    }
   }
 }
