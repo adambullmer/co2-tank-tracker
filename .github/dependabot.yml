@@ -27,6 +27,6 @@ updates:
   assignees:
     - adambullmer
   commit-message:
-    prefix: fix
-    prefix-development: chore
+    prefix: :bug:fix
+    prefix-development: :wrench:chore
     include: scope
