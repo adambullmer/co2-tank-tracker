@@ -5874,7 +5874,7 @@ __metadata:
     babel-eslint: ^10.1.0
     babel-jest: ^26.6.3
     core-js: ^3.9.1
-    eslint: ^7.22.0
+    eslint: ^7.25.0
     eslint-config-prettier: ^8.1.0
     eslint-plugin-nuxt: ^2.0.0
     eslint-plugin-prettier: ^3.3.1
@@ -8031,9 +8031,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.22.0":
-  version: 7.22.0
-  resolution: "eslint@npm:7.22.0"
+"eslint@npm:^7.25.0":
+  version: 7.25.0
+  resolution: "eslint@npm:7.25.0"
   dependencies:
     "@babel/code-frame": 7.12.11
     "@eslint/eslintrc": ^0.4.0
@@ -8074,7 +8074,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: 9be0a215b6b1e2941318b3e0c11ada8ba9a4adacf5960ab916d07f1d619828af40cba00e8ed7d151b8c715ba8ea81f4c2a56e46a2558d9795788b4f410a95ec4
+  checksum: 6e1782e2264ebf987504746ee82e996bf0ef2c29a2eaea869b54cb8aa1eaf10945b1d563618515e65ac934ca626f3609282127773f45868ad4a98744458a3c62
   languageName: node
   linkType: hard
 
