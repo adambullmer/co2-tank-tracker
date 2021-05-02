@@ -19,11 +19,11 @@
           />
         </v-sheet>
         <v-card-text class="pt-0">
-          <p class="text-h3">Litres Produced: {{ totalLitresProduced }}</p>
+          <p class="text-h3">Litres: {{ totalLitresProduced }}</p>
           <p class="text-h3 green--text">
-            Value Produced: ${{ valueProduced }}
+            Produced: {{ valueProduced | money }}
           </p>
-          <p class="text-h3 red--text">Supplies Cost: -${{ suppliesCost }}</p>
+          <p class="text-h3 red--text">Supplies: {{ -suppliesCost | money }}</p>
           <p
             class="text-h3"
             :class="{
@@ -31,7 +31,7 @@
               'red--text': valueProduced - suppliesCost < 0,
             }"
           >
-            Savings: ${{ valueProduced - suppliesCost }}
+            Savings: {{ (valueProduced - suppliesCost) | money }}
           </p>
         </v-card-text>
       </v-card>
@@ -40,7 +40,12 @@
         <v-card-title>Add Gas Usage</v-card-title>
         <v-card-text>
           <v-row align="center" justify="center">
-            <v-col cols="12" md="6" order-md="1">
+            <v-col
+              cols="12"
+              md="6"
+              order-md="1"
+              class="d-flex align-center justify-center"
+            >
               <v-date-picker v-model="currentDate" />
             </v-col>
 
@@ -72,7 +77,16 @@ function initialDate() {
   return format(new Date(), "yyyy-MM-dd");
 }
 
-@Component
+@Component({
+  filters: {
+    money(value: any) {
+      return new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: "USD",
+      }).format(value);
+    },
+  },
+})
 export default class Index extends Vue {
   currentDate = initialDate();
 
@@ -115,7 +129,11 @@ export default class Index extends Vue {
   }
 
   get valueProduced() {
-    return (this.totalLitresProduced / 4.25) * 10;
+    const topoPrice = 10.99;
+    const tax = 8.25 / 100 + 1;
+    const topoLitres = (12 * 12) / 33.814;
+
+    return (this.totalLitresProduced / topoLitres) * topoPrice * tax;
   }
 }
 </script>
