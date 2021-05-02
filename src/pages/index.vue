@@ -53,10 +53,10 @@
 <script lang="ts">
 import { Vue, Component } from "nuxt-property-decorator";
 import { usageStore } from "@/store";
+import { format } from "date-fns";
 
 function initialDate() {
-  const date = new Date();
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  return format(new Date(), "yyyy-MM-dd");
 }
 
 @Component
