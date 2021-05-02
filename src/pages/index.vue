@@ -76,11 +76,21 @@ export default class Index extends Vue {
   }
 
   get usageValues() {
-    return usageStore.usage.map(({ value }) => value);
+    return usageStore.dailyUsage().map(({ value }) => value);
   }
 
   get usageLabels() {
-    return usageStore.usage.map(({ filledAt }) => filledAt);
+    const length = usageStore.dailyUsage().length;
+    const maxMiddleLabels = 5;
+    const mod = Math.ceil(length / maxMiddleLabels) - 1;
+
+    return usageStore
+      .dailyUsage()
+      .map(({ filledAt }, index) =>
+        index === 0 || index === length - 1 || index % mod === 0
+          ? format(filledAt, "MM-dd")
+          : " "
+      );
   }
 }
 </script>

@@ -7,6 +7,7 @@ import {
 } from "nuxt-property-decorator";
 import { config } from "vuex-module-decorators";
 import { $fire } from "@/utils/accessors/firebase";
+import { subDays, format, compareAsc } from "date-fns";
 
 let ref: ReturnType<typeof $fire["database"]["ref"]> | null;
 
@@ -23,6 +24,39 @@ export default class Usage extends VuexModule {
 
   get indexById() {
     return (id: string) => this.usage.findIndex((entry) => entry.id === id);
+  }
+
+  get dailyUsage() {
+    return (days = 30) => {
+      const usageData: Record<string, any> = {};
+      const today = Date.now();
+
+      for (let x = days; x > 0; x--) {
+        const day = subDays(today, x);
+        const date = format(day, "yyyy-MM-dd");
+        usageData[date] = {
+          filledAt: day,
+          value: 0,
+        };
+      }
+
+      this.usage.reduce((acc, item) => {
+        if (acc[item.filledAt]) {
+          acc[item.filledAt].value += item.value;
+        }
+
+        return acc;
+      }, usageData);
+
+      const usage = Object.values(usageData)
+        .map(({ filledAt, value }: any) => ({
+          filledAt,
+          value,
+        }))
+        .sort((a, b) => compareAsc(a.filledAt, b.filledAt));
+
+      return usage;
+    };
   }
 
   @Action
