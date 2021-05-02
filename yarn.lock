@@ -5874,6 +5874,7 @@ __metadata:
     babel-eslint: ^10.1.0
     babel-jest: ^26.6.3
     core-js: ^3.9.1
+    date-fns: ^2.21.1
     eslint: ^7.25.0
     eslint-config-prettier: ^8.1.0
     eslint-plugin-nuxt: ^2.0.0
@@ -6896,6 +6897,13 @@ __metadata:
   version: 0.14.2
   resolution: "date-and-time@npm:0.14.2"
   checksum: 3fbe8f519ab1d64374cd62ceb34d83eef156e796184db2da4b3c8bedf15b3b693f6eb4f232e9353fd97d3529137c12c41a232dd5ccbaee983e331995c60d18d0
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^2.21.1":
+  version: 2.21.1
+  resolution: "date-fns@npm:2.21.1"
+  checksum: 00a2ddea1047c4ce6eaadda76a0ee0782d1cfe65061641bbff94f7a70d2d6ab12dac89e027b39d49710bdb2cf264bc1a4e096b0324c7de79699296a4c19f4a40
   languageName: node
   linkType: hard
 
