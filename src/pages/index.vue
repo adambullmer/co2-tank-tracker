@@ -19,7 +19,20 @@
           />
         </v-sheet>
         <v-card-text class="pt-0">
-          <p class="text-h3">Litres Produced</p>
+          <p class="text-h3">Litres Produced: {{ totalLitresProduced }}</p>
+          <p class="text-h3 green--text">
+            Value Produced: ${{ valueProduced }}
+          </p>
+          <p class="text-h3 red--text">Supplies Cost: -${{ suppliesCost }}</p>
+          <p
+            class="text-h3"
+            :class="{
+              'green--text': valueProduced - suppliesCost > 0,
+              'red--text': valueProduced - suppliesCost < 0,
+            }"
+          >
+            Savings: ${{ valueProduced - suppliesCost }}
+          </p>
         </v-card-text>
       </v-card>
 
@@ -91,6 +104,18 @@ export default class Index extends Vue {
           ? format(filledAt, "MM-dd")
           : " "
       );
+  }
+
+  get suppliesCost() {
+    return 200;
+  }
+
+  get totalLitresProduced() {
+    return usageStore.usage.reduce((total, { value }) => total + value, 0);
+  }
+
+  get valueProduced() {
+    return (this.totalLitresProduced / 4.25) * 10;
   }
 }
 </script>
