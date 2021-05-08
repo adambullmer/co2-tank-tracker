@@ -64,6 +64,15 @@
           </v-row>
         </v-card-text>
       </v-card>
+
+      <v-snackbar v-model="snackbarModel" color="success">
+        <span class="text-h5">Added Usage of {{ recentAmount }} Litres</span>
+        <template #action="{ attrs }">
+          <v-btn v-bind="attrs" icon @click="snackbarModel = false">
+            <v-icon>fa-times</v-icon>
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-col>
   </v-row>
 </template>
@@ -89,6 +98,8 @@ function initialDate() {
 })
 export default class Index extends Vue {
   currentDate = initialDate();
+  snackbarModel = false;
+  recentAmount = 0;
 
   async created() {
     await usageStore.watchUsageDocument();
@@ -98,8 +109,10 @@ export default class Index extends Vue {
     await usageStore.unwatchUsageDocument();
   }
 
-  handleInput(value: number) {
-    usageStore.addUsageDocument({ value, filledAt: this.currentDate });
+  async handleInput(value: number) {
+    await usageStore.addUsageDocument({ value, filledAt: this.currentDate });
+    this.recentAmount = value;
+    this.snackbarModel = true;
   }
 
   get usageValues() {

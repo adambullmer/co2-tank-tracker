@@ -31,7 +31,7 @@ export default class Usage extends VuexModule {
       const usageData: Record<string, any> = {};
       const today = Date.now();
 
-      for (let x = days; x > 0; x--) {
+      for (let x = days; x >= 0; x--) {
         const day = subDays(today, x);
         const date = format(day, "yyyy-MM-dd");
         usageData[date] = {
@@ -74,14 +74,21 @@ export default class Usage extends VuexModule {
   unwatchUsageDocument() {
     ref?.off();
     ref = null;
+    this.resetStore();
   }
 
   @Action
-  addUsageDocument({ value, filledAt }: { value: number; filledAt: string }) {
+  async addUsageDocument({
+    value,
+    filledAt,
+  }: {
+    value: number;
+    filledAt: string;
+  }) {
     const createdAt = Date.now();
     const key = ref?.push();
 
-    key?.set({
+    await key?.set({
       createdAt,
       value,
       filledAt,
@@ -125,5 +132,10 @@ export default class Usage extends VuexModule {
     if (index !== -1) {
       this.usage.splice(index, 1);
     }
+  }
+
+  @Mutation
+  resetStore() {
+    this.usage.splice(0, this.usage.length);
   }
 }
