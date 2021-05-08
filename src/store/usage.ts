@@ -74,14 +74,21 @@ export default class Usage extends VuexModule {
   unwatchUsageDocument() {
     ref?.off();
     ref = null;
+    this.resetStore();
   }
 
   @Action
-  addUsageDocument({ value, filledAt }: { value: number; filledAt: string }) {
+  async addUsageDocument({
+    value,
+    filledAt,
+  }: {
+    value: number;
+    filledAt: string;
+  }) {
     const createdAt = Date.now();
     const key = ref?.push();
 
-    key?.set({
+    await key?.set({
       createdAt,
       value,
       filledAt,
