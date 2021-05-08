@@ -133,4 +133,9 @@ export default class Usage extends VuexModule {
       this.usage.splice(index, 1);
     }
   }
+
+  @Mutation
+  resetStore() {
+    this.usage.splice(0, this.usage.length);
+  }
 }
