@@ -31,7 +31,7 @@ export default class Usage extends VuexModule {
       const usageData: Record<string, any> = {};
       const today = Date.now();
 
-      for (let x = days; x > 0; x--) {
+      for (let x = days; x >= 0; x--) {
         const day = subDays(today, x);
         const date = format(day, "yyyy-MM-dd");
         usageData[date] = {
