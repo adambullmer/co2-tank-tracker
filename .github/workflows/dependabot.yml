@@ -54,7 +54,7 @@ jobs:
           YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
 
       - name: Add & Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: ""
           commit_options: "--no-verify --signoff --fixup=${{ github.event.commits[0].sha }}"
