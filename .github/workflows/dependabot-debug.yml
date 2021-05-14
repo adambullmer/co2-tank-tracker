@@ -1,0 +1,62 @@
+name: Dependabot Debug
+
+on:
+  push:
+    branches: [test-dependabot]
+
+jobs:
+  build:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Autofix lockfile
+        run: |
+          # change directory
+          # assuming Angular commit style (build: bump XXX from AAA to BBB in YYY)
+          # use $8 for default commit message style (Bump XXX from AAA to BBB in YYY)
+          cd .`git log -1 --pretty=%s | awk '{ print $9 }'`
+
+          # restore yarn.lock from the previous commit
+          git checkout HEAD^ -- yarn.lock
+
+          # install yarn-plugin-deduplicate
+          yarn plugin import https://raw.githubusercontent.com/eps1lon/yarn-plugin-deduplicate/latest/bin/%40yarnpkg/plugin-deduplicate.js
+
+          # if package.json was not updated, upgrade the dependency
+          # assuming Angular commit style (build: bump XXX from ...)
+          # use $2 for default commit message style (Bump XXX from ...)
+          git diff --name-only HEAD^ HEAD | grep -q 'package.json' || yarn up `git log -1 --pretty=%s | awk '{ print $3 }'`
+
+          # restore package.json from the last commit
+          git checkout HEAD -- package.json
+
+          yarn install
+
+          # deduplicate lockfile
+          yarn deduplicate
+        env:
+          YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
+
+      - name: Add & Commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add yarn.lock
+          git commit --fixup HEAD
+          git push
