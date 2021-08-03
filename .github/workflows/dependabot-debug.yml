@@ -60,3 +60,9 @@ jobs:
           git add yarn.lock
           git commit --fixup HEAD
           git push
+
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          labels: |
+            automerge
