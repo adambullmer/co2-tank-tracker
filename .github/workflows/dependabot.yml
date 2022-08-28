@@ -7,23 +7,19 @@ on:
 jobs:
   build:
     if: github.actor == 'dependabot[bot]'
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
           persist-credentials: false # minimize exposure
+
       - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
+          node-version-file: .nvmrc
 
       - name: Autofix lockfile
         run: |
