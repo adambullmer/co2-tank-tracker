@@ -6947,7 +6947,7 @@ __metadata:
     node-gyp: ^9.1.0
     nuxt: ^2.15.8
     nuxt-property-decorator: ^2.9.1
-    prettier: ^2.2.1
+    prettier: ^2.7.1
     ts-jest: ^28.0.8
     ts-node: ^10.9.1
     vue-jest: ^3.0.7
@@ -16902,12 +16902,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "prettier@npm:2.2.1"
+"prettier@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "prettier@npm:2.7.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 800de2df3d37067ab24478c7f32c60ca0c57b01742133287829feeb4a70d239a7bf6bccb56196784777af591ad80fb9ba70c1a49b0fcecf9f5622a764d513edb
+  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
   languageName: node
   linkType: hard
 
