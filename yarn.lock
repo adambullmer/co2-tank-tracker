@@ -6976,6 +6976,9 @@ __metadata:
     ts-node: ^10.9.1
     vue-jest: ^3.0.7
     vuex-module-decorators: ^1.0.1
+  dependenciesMeta:
+    node-gyp:
+      optional: true
   languageName: unknown
   linkType: soft
 
